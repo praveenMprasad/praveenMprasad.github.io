@@ -32,7 +32,7 @@ theme = "anatole"
     url = "/talks/"
     weight = 2
   [[menu.main]]
-    name = "Blogs"
+    name = "Posts"
     url = "/post/"
     weight = 3
   [[menu.main]]
