@@ -1,12 +1,12 @@
 ---
-title: "Talks"
+title: ""
 ---
 
 <style>
 .talk-list {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
 }
 
 .talk-item {
@@ -48,8 +48,6 @@ title: "Talks"
 </style>
 
 <div class="talk-list">
-
-<!-- 1 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://youtu.be/uyJAgVBRkt0" target="_blank">
@@ -60,8 +58,6 @@ title: "Talks"
     <h3><a href="https://youtu.be/uyJAgVBRkt0" target="_blank">Multimodal RAG</a></h3>
   </div>
 </div>
-
-<!-- 2 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://youtu.be/anLaY47S_3I" target="_blank">
@@ -72,8 +68,6 @@ title: "Talks"
     <h3><a href="https://youtu.be/anLaY47S_3I" target="_blank">GenAI for Search</a></h3>
   </div>
 </div>
-
-<!-- 3 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://youtu.be/soZQ9crG2kk" target="_blank">
@@ -84,8 +78,6 @@ title: "Talks"
     <h3><a href="https://youtu.be/soZQ9crG2kk" target="_blank">RAG Architecture (10k+ Views)</a></h3>
   </div>
 </div>
-
-<!-- 4 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://www.youtube.com/watch?v=hlaHiRzL8FM" target="_blank">
@@ -96,8 +88,6 @@ title: "Talks"
     <h3><a href="https://www.youtube.com/watch?v=hlaHiRzL8FM" target="_blank">OpenSearch RAG Best Practices</a></h3>
   </div>
 </div>
-
-<!-- 5 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://www.youtube.com/watch?v=dZCYcQ4BmCU" target="_blank">
@@ -108,8 +98,6 @@ title: "Talks"
     <h3><a href="https://www.youtube.com/watch?v=dZCYcQ4BmCU" target="_blank">OpenSearch ML Innovations and Best Practices</a></h3>
   </div>
 </div>
-
-<!-- 6 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://youtu.be/A5AmrniMWqk" target="_blank">
@@ -120,8 +108,6 @@ title: "Talks"
     <h3><a href="https://youtu.be/A5AmrniMWqk" target="_blank">ML Search</a></h3>
   </div>
 </div>
-
-<!-- 7 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://youtu.be/_ipMfd7RuNk" target="_blank">
@@ -132,8 +118,6 @@ title: "Talks"
     <h3><a href="https://youtu.be/_ipMfd7RuNk" target="_blank">Sparse ML Models & Search</a></h3>
   </div>
 </div>
-
-<!-- 8 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://www.youtube.com/watch?v=wpRaUzNMt1Y" target="_blank">
@@ -144,8 +128,6 @@ title: "Talks"
     <h3><a href="https://www.youtube.com/watch?v=wpRaUzNMt1Y" target="_blank">OpenSearch Query Rewriting</a></h3>
   </div>
 </div>
-
-<!-- 9 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://youtu.be/5C9F0WR4PF8" target="_blank">
@@ -156,8 +138,6 @@ title: "Talks"
     <h3><a href="https://youtu.be/5C9F0WR4PF8" target="_blank">OpenSearch & Multi-Vectors (OpenSearchCon NA)</a></h3>
   </div>
 </div>
-
-<!-- 10 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://youtu.be/uG_qAMiY2Ao" target="_blank">
@@ -168,8 +148,6 @@ title: "Talks"
     <h3><a href="https://youtu.be/uG_qAMiY2Ao" target="_blank">OpenSearch & Vector Interpretability (OpenSearchCon NA)</a></h3>
   </div>
 </div>
-
-<!-- 11 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://www.youtube.com/watch?v=JK2ayZOXC-s" target="_blank">
@@ -180,8 +158,6 @@ title: "Talks"
     <h3><a href="https://www.youtube.com/watch?v=JK2ayZOXC-s" target="_blank">Vector Best Practices (AI_Dev Con)</a></h3>
   </div>
 </div>
-
-<!-- 12 -->
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://www.youtube.com/watch?v=l3vqZPDWHSc" target="_blank">
@@ -192,5 +168,4 @@ title: "Talks"
     <h3><a href="https://www.youtube.com/watch?v=l3vqZPDWHSc" target="_blank">OpenSearch Technical Deep Dive (Title Placeholder)</a></h3>
   </div>
 </div>
-
 </div>

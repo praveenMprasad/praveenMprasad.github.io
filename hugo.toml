@@ -1,12 +1,13 @@
 baseURL = "https://praveenmprasad.github.io/"
 languageCode = "en-ie"
-title = "Praveen"
+title = "PRAVEEN MOHAN PRASAD"
 theme = "anatole"
 
 [params]
-  author = "Praveen"
-  description = "Enterprise Search & Vector DB Specialist — OpenSearch | Vector Search | RAG | Agentic Search"
+  author = "PRAVEEN MOHAN PRASAD"
+  description = ""
   profilePicture = "images/profile.jpg"
+  customCss = ["css/custom.css"]
   [[params.socialIcons]]
   icon = "fab fa-linkedin"
   title = "LinkedIn"
@@ -24,8 +25,8 @@ theme = "anatole"
 
 [menu]
   [[menu.main]]
-    name = "Home"
-    url = "/"
+    name = "About"
+    url = "/about/"
     weight = 1
   [[menu.main]]
     name = "Talks"
@@ -35,10 +36,6 @@ theme = "anatole"
     name = "Posts"
     url = "/post/"
     weight = 3
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 4
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]

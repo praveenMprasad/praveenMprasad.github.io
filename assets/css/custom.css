@@ -1,0 +1,23 @@
+.sidebar__introduction-profileimage {
+  width: 150px;
+  height: 150px;
+}
+
+.sidebar__introduction-title {
+  display: block !important;
+}
+
+.sidebar__introduction-title h1 {
+  display: block !important;
+}
+
+.sidebar__introduction-title h1 a::after {
+  content: "PRAVEEN MOHAN PRASAD";
+  font-weight: bold;
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+}
+
+.sidebar__introduction-description {
+  display: none;
+}
