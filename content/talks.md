@@ -50,42 +50,14 @@ title: ""
 <div class="talk-list">
 <div class="talk-item">
   <div class="talk-thumb">
-    <a href="https://youtu.be/uyJAgVBRkt0" target="_blank">
-      <img src="https://img.youtube.com/vi/uyJAgVBRkt0/hqdefault.jpg">
+    <a href="https://youtu.be/5C9F0WR4PF8" target="_blank">
+      <img src="https://img.youtube.com/vi/5C9F0WR4PF8/hqdefault.jpg">
     </a>
   </div>
   <div class="talk-content">
-    <h3><a href="https://youtu.be/uyJAgVBRkt0" target="_blank">Multimodal RAG</a></h3>
-  </div>
-</div>
-<div class="talk-item">
-  <div class="talk-thumb">
-    <a href="https://youtu.be/anLaY47S_3I" target="_blank">
-      <img src="https://img.youtube.com/vi/anLaY47S_3I/hqdefault.jpg">
-    </a>
-  </div>
-  <div class="talk-content">
-    <h3><a href="https://youtu.be/anLaY47S_3I" target="_blank">GenAI for Search</a></h3>
-  </div>
-</div>
-<div class="talk-item">
-  <div class="talk-thumb">
-    <a href="https://youtu.be/soZQ9crG2kk" target="_blank">
-      <img src="https://img.youtube.com/vi/soZQ9crG2kk/hqdefault.jpg">
-    </a>
-  </div>
-  <div class="talk-content">
-    <h3><a href="https://youtu.be/soZQ9crG2kk" target="_blank">RAG Architecture (10k+ Views)</a></h3>
-  </div>
-</div>
-<div class="talk-item">
-  <div class="talk-thumb">
-    <a href="https://www.youtube.com/watch?v=hlaHiRzL8FM" target="_blank">
-      <img src="https://img.youtube.com/vi/hlaHiRzL8FM/hqdefault.jpg">
-    </a>
-  </div>
-  <div class="talk-content">
-    <h3><a href="https://www.youtube.com/watch?v=hlaHiRzL8FM" target="_blank">OpenSearch RAG Best Practices</a></h3>
+    <h3><a href="https://youtu.be/5C9F0WR4PF8" target="_blank">Search with (multi-)vectors</a></h3>
+                        <p style = "font-size:18px">Late interaction models for Search - Better relevance with fine-grained representative vectors</p>
+
   </div>
 </div>
 <div class="talk-item">
@@ -95,9 +67,57 @@ title: ""
     </a>
   </div>
   <div class="talk-content">
-    <h3><a href="https://www.youtube.com/watch?v=dZCYcQ4BmCU" target="_blank">OpenSearch ML Innovations and Best Practices</a></h3>
+    <h3><a href="https://www.youtube.com/watch?v=dZCYcQ4BmCU" target="_blank">ML innovations in search lifecycle</a></h3>
+                <p style = "font-size:18px">Learn How ML can be applied in various stages of a query lifecycle to improve Search relevance</p>
+
   </div>
 </div>
+<div class="talk-item">
+  <div class="talk-thumb">
+    <a href="https://youtu.be/uyJAgVBRkt0" target="_blank">
+      <img src="https://img.youtube.com/vi/uyJAgVBRkt0/hqdefault.jpg">
+    </a>
+  </div>
+  <div class="talk-content">
+    <h3><a href="https://youtu.be/uyJAgVBRkt0" target="_blank">Multimodal RAG</a></h3>
+    <p style = "font-size:18px">Don't miss the insights from the images, tables and charts of your PDF documents when building RAG pipelines</p>
+  </div>
+</div>
+<div class="talk-item">
+  <div class="talk-thumb">
+    <a href="https://youtu.be/anLaY47S_3I" target="_blank">
+      <img src="https://img.youtube.com/vi/anLaY47S_3I/hqdefault.jpg">
+    </a>
+  </div>
+  <div class="talk-content">
+    <h3><a href="https://youtu.be/anLaY47S_3I" target="_blank">Rediscover your Lexical search</a></h3>
+        <p style = "font-size:18px">You always don't need vectors! Empower your Lexical Search with semantic match capabilities by applying Expansion, Enrichment and Rewriting techniques</p>
+
+  </div>
+</div>
+<div class="talk-item">
+  <div class="talk-thumb">
+    <a href="https://youtu.be/soZQ9crG2kk" target="_blank">
+      <img src="https://img.youtube.com/vi/soZQ9crG2kk/hqdefault.jpg">
+    </a>
+  </div>
+  <div class="talk-content">
+    <h3><a href="https://youtu.be/soZQ9crG2kk" target="_blank">Build RAG with AWS Lambda: Solution Architecture</a></h3>
+  </div>
+</div>
+<div class="talk-item">
+  <div class="talk-thumb">
+    <a href="https://www.youtube.com/watch?v=hlaHiRzL8FM" target="_blank">
+      <img src="https://img.youtube.com/vi/hlaHiRzL8FM/hqdefault.jpg">
+    </a>
+  </div>
+  <div class="talk-content">
+    <h3><a href="https://www.youtube.com/watch?v=hlaHiRzL8FM" target="_blank">Understand your user queries better using LLMs </a></h3>
+            <p style = "font-size:18px">Auto-extract filters from natural language queries of your users and use LLMs to write OpenSearch DSL queries</p>
+
+</div>
+ </div>
+
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://youtu.be/A5AmrniMWqk" target="_blank">
@@ -106,6 +126,8 @@ title: ""
   </div>
   <div class="talk-content">
     <h3><a href="https://youtu.be/A5AmrniMWqk" target="_blank">ML Search</a></h3>
+                <p style = "font-size:18px">Learn different ML Search types of OpenSearch</p>
+
   </div>
 </div>
 <div class="talk-item">
@@ -115,7 +137,9 @@ title: ""
     </a>
   </div>
   <div class="talk-content">
-    <h3><a href="https://youtu.be/_ipMfd7RuNk" target="_blank">Sparse ML Models & Search</a></h3>
+    <h3><a href="https://youtu.be/_ipMfd7RuNk" target="_blank">ML with Lexical Search</a></h3>
+                    <p style = "font-size:18px">Text-expansion technique, a ML technique to empower Lexical Search with semantic matching capabilities</p>
+
   </div>
 </div>
 <div class="talk-item">
@@ -125,19 +149,12 @@ title: ""
     </a>
   </div>
   <div class="talk-content">
-    <h3><a href="https://www.youtube.com/watch?v=wpRaUzNMt1Y" target="_blank">OpenSearch Query Rewriting</a></h3>
+    <h3><a href="https://www.youtube.com/watch?v=wpRaUzNMt1Y" target="_blank">AI agents, the new users of Search</a></h3>
+                        <p style = "font-size:18px">Using Agents in retrieval pipelines to build self reflective, iterative and relevant search</p>
+
   </div>
 </div>
-<div class="talk-item">
-  <div class="talk-thumb">
-    <a href="https://youtu.be/5C9F0WR4PF8" target="_blank">
-      <img src="https://img.youtube.com/vi/5C9F0WR4PF8/hqdefault.jpg">
-    </a>
-  </div>
-  <div class="talk-content">
-    <h3><a href="https://youtu.be/5C9F0WR4PF8" target="_blank">OpenSearch & Multi-Vectors (OpenSearchCon NA)</a></h3>
-  </div>
-</div>
+
 <div class="talk-item">
   <div class="talk-thumb">
     <a href="https://youtu.be/uG_qAMiY2Ao" target="_blank">
@@ -145,7 +162,7 @@ title: ""
     </a>
   </div>
   <div class="talk-content">
-    <h3><a href="https://youtu.be/uG_qAMiY2Ao" target="_blank">OpenSearch & Vector Interpretability (OpenSearchCon NA)</a></h3>
+    <h3><a href="https://youtu.be/uG_qAMiY2Ao" target="_blank">Explainable vector search using late interaction models</a></h3>
   </div>
 </div>
 <div class="talk-item">
@@ -155,7 +172,9 @@ title: ""
     </a>
   </div>
   <div class="talk-content">
-    <h3><a href="https://www.youtube.com/watch?v=JK2ayZOXC-s" target="_blank">Vector Best Practices (AI_Dev Con)</a></h3>
+    <h3><a href="https://www.youtube.com/watch?v=JK2ayZOXC-s" target="_blank">Multimodal RAG Part 2</a></h3>
+                            <p style = "font-size:18px">Multimodal RAG using (i) Grounding to text approach (ii) Colpali approach, deepdive and tradeoffs</p>
+
   </div>
 </div>
 <div class="talk-item">
@@ -165,7 +184,9 @@ title: ""
     </a>
   </div>
   <div class="talk-content">
-    <h3><a href="https://www.youtube.com/watch?v=l3vqZPDWHSc" target="_blank">OpenSearch Technical Deep Dive (Title Placeholder)</a></h3>
+    <h3><a href="https://www.youtube.com/watch?v=l3vqZPDWHSc" target="_blank">OpenSearch ML capabilites</a></h3>
+                                <p style = "font-size:18px">Learn how OpenSearch has evolved by applying ML at every stage of a query lifecycle to improve relevance</p>
+
   </div>
 </div>
 </div>

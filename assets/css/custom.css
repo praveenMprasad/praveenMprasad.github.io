@@ -3,19 +3,18 @@
   height: 150px;
 }
 
-.sidebar__introduction-title {
-  display: block !important;
-}
-
-.sidebar__introduction-title h1 {
-  display: block !important;
-}
-
-.sidebar__introduction-title h1 a::after {
+.sidebar__introduction-title::after {
   content: "PRAVEEN MOHAN PRASAD";
+  display: block;
   font-weight: bold;
   font-size: 1.1em;
   letter-spacing: 0.5px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.sidebar__introduction-title h1 {
+  display: none;
 }
 
 .sidebar__introduction-description {
