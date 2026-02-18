@@ -1,0 +1,27 @@
+baseURL = "https://praveenMprasad.github.io/"
+languageCode = "en-ie"
+title = "Praveen"
+theme = "anatole"
+
+[params]
+  author = "Praveen"
+  description = "Enterprise Search & Vector DB Specialist — OpenSearch | Vector Search | RAG | Agentic Search"
+  profilePicture = "images/profile.jpg"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Talks"
+    url = "/talks/"
+    weight = 2
+  [[menu.main]]
+    name = "Blogs"
+    url = "/post/"
+    weight = 3
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
