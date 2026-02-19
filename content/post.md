@@ -54,7 +54,7 @@ title: ""
     <img src="/images/demo-opensearch-ai.jpg" alt="OpenSearch AI demos">
   </a>
   <div class="body">
-    <a class="title" href="https://huggingface.co/spaces/YOUR_SPACE_LINK" target="_blank">OpenSearch AI Demo Playground</a>
+    <a class="title" href="https://huggingface.co/spaces/opensearch-project/OpenSearch-AI" target="_blank">OpenSearch AI Demo Playground</a>
     <div class="meta">AI Search • Multimodal RAG • Agentic RAG</div>
   </div>
 </div>
