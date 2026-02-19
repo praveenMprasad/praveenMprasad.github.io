@@ -67,8 +67,8 @@ title: ""
     </a>
   </div>
   <div class="talk-content">
-    <h3><a href="https://www.youtube.com/watch?v=dZCYcQ4BmCU" target="_blank">ML innovations in search lifecycle</a></h3>
-                <p style = "font-size:18px">Learn How ML can be applied in various stages of a query lifecycle to improve Search relevance</p>
+    <h3><a href="https://www.youtube.com/watch?v=dZCYcQ4BmCU" target="_blank">Colpali for Multimodal RAG</a></h3>
+                <p style = "font-size:18px">Late interaction models for RAG, advantages and trade-offs</p>
 
   </div>
 </div>
