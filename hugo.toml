@@ -6,7 +6,7 @@ theme = "anatole"
 [params]
   author = "PRAVEEN MOHAN PRASAD"
   description = ""
-  profilePicture = "images/profile.jpg"
+  profilePicture = "images/profile_1.jpg"
   customCss = ["css/custom.css"]
   [[params.socialIcons]]
   icon = "fab fa-linkedin"
