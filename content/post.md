@@ -68,6 +68,14 @@ title: ""
 <div class="post-grid">
 <div class="post-card">
   <div class="body">
+    <a class="title" href="https://aws.amazon.com/blogs/big-data/reducing-costs-for-shuffle-heavy-apache-spark-workloads-with-serverless-storage-for-amazon-emr-serverless/" target="_blank">
+      Reducing costs for shuffle-heavy Apache Spark workloads with serverless storage for Amazon EMR Serverless
+    </a>
+    <div class="meta">AWS Big Data Blog</div>
+  </div>
+</div>
+<div class="post-card">
+  <div class="body">
     <a class="title" href="https://opensearch.org/blog/introducing-opensearch-ai-demos-in-hugging-face-your-all-in-one-ai-search-playground/" target="_blank">
       Introducing OpenSearch AI Demos in Hugging Face
     </a>
