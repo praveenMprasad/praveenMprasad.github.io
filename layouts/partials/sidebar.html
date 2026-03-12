@@ -47,6 +47,14 @@
         </a>
       </li>
     </ul>
+    <div class="sidebar__message-box">
+      <p class="sidebar__message-prompt">Want to discuss your use case? Leave a quick message.</p>
+      <input type="text" id="msgName" placeholder="Your name" class="sidebar__message-input" />
+      <input type="email" id="msgEmail" placeholder="Your email" class="sidebar__message-input" />
+      <textarea id="msgText" placeholder="Your message..." class="sidebar__message-textarea"></textarea>
+      <button class="sidebar__message-send" id="msgSend">Send</button>
+      <div class="sidebar__message-success" id="msgSuccess">Thanks! Message sent.</div>
+    </div>
   </div>
   {{- partial "footer.html" (dict "context" . "footerClassModifier" "sidebar") -}}
 </div>
