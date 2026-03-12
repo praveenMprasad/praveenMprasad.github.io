@@ -1,0 +1,65 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Visitor tracking backend for portfolio site
+
+Globals:
+  Function:
+    Timeout: 10
+    Runtime: python3.13
+    Tags:
+      auto-delete: "no"
+
+Resources:
+  VisitorTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: portfolio-visitors
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: visitor_id
+          AttributeType: S
+        - AttributeName: timestamp
+          AttributeType: S
+      KeySchema:
+        - AttributeName: visitor_id
+          KeyType: HASH
+        - AttributeName: timestamp
+          KeyType: RANGE
+      Tags:
+        - Key: auto-delete
+          Value: "no"
+
+  TrackVisitorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda/
+      Handler: track_visitor.handler
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref VisitorTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref VisitorTable
+      Events:
+        TrackApi:
+          Type: Api
+          Properties:
+            Path: /track
+            Method: post
+            RestApiId: !Ref VisitorApi
+
+  VisitorApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      Cors:
+        AllowOrigin: "'*'"
+        AllowHeaders: "'Content-Type'"
+        AllowMethods: "'POST,OPTIONS'"
+      Tags:
+        auto-delete: "no"
+
+Outputs:
+  ApiEndpoint:
+    Description: Visitor tracking API endpoint
+    Value: !Sub "https://${VisitorApi}.execute-api.${AWS::Region}.amazonaws.com/prod/track"

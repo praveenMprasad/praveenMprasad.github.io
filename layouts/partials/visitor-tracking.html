@@ -1,0 +1,33 @@
+<script>
+(function () {
+  // Replace this with your actual API Gateway endpoint after deploying
+  var API_URL = "https://n4ge8kjgyk.execute-api.us-east-1.amazonaws.com/prod/track";
+
+  // Generate or reuse a visitor ID so repeat visits from the same browser are grouped
+  var vid = localStorage.getItem("_vid");
+  if (!vid) {
+    vid = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2);
+    localStorage.setItem("_vid", vid);
+  }
+
+  var payload = JSON.stringify({
+    visitor_id: vid,
+    page: window.location.pathname,
+    referrer: document.referrer || "",
+    screen_width: screen.width,
+    screen_height: screen.height,
+  });
+
+  // Use sendBeacon for reliability (fires even on page unload), fall back to fetch
+  if (navigator.sendBeacon) {
+    navigator.sendBeacon(API_URL, payload);
+  } else {
+    fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: payload,
+      keepalive: true,
+    }).catch(function () {});
+  }
+})();
+</script>
