@@ -1,25 +1,4 @@
 <style>
-.msg-box-toggle {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s;
-}
-.msg-box-toggle:hover { transform: scale(1.1); }
-
 .msg-box-panel {
   display: none;
   position: fixed;
@@ -80,8 +59,6 @@
 }
 </style>
 
-<button class="msg-box-toggle" id="msgToggle" aria-label="Send a message">💬</button>
-
 <div class="msg-box-panel" id="msgPanel">
   <div class="msg-box-header">Drop me a message</div>
   <div class="msg-box-body">
@@ -96,10 +73,11 @@
 <script>
 (function () {
   var API_URL = "https://n4ge8kjgyk.execute-api.us-east-1.amazonaws.com/prod/track";
-  var toggle = document.getElementById("msgToggle");
+  var toggle = document.getElementById("msgToggleSidebar");
   var panel = document.getElementById("msgPanel");
 
-  toggle.addEventListener("click", function () {
+  toggle.addEventListener("click", function (e) {
+    e.preventDefault();
     panel.classList.toggle("open");
   });
 
