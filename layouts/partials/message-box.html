@@ -1,0 +1,148 @@
+<style>
+.msg-box-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+.msg-box-toggle:hover { transform: scale(1.1); }
+
+.msg-box-panel {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  z-index: 9999;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.msg-box-panel.open { display: block; }
+
+.msg-box-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.msg-box-body { padding: 16px; }
+.msg-box-body input,
+.msg-box-body textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.msg-box-body textarea { height: 80px; resize: vertical; }
+
+.msg-box-send {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.msg-box-send:hover { opacity: 0.9; }
+.msg-box-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.msg-box-success {
+  color: #667eea;
+  font-size: 14px;
+  text-align: center;
+  padding: 8px 0;
+  display: none;
+}
+</style>
+
+<button class="msg-box-toggle" id="msgToggle" aria-label="Send a message">💬</button>
+
+<div class="msg-box-panel" id="msgPanel">
+  <div class="msg-box-header">Drop me a message</div>
+  <div class="msg-box-body">
+    <input type="text" id="msgName" placeholder="Your name" />
+    <input type="email" id="msgEmail" placeholder="Your email" />
+    <textarea id="msgText" placeholder="Your message..."></textarea>
+    <button class="msg-box-send" id="msgSend">Send</button>
+    <div class="msg-box-success" id="msgSuccess">Thanks! Message sent.</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var API_URL = "https://n4ge8kjgyk.execute-api.us-east-1.amazonaws.com/prod/track";
+  var toggle = document.getElementById("msgToggle");
+  var panel = document.getElementById("msgPanel");
+
+  toggle.addEventListener("click", function () {
+    panel.classList.toggle("open");
+  });
+
+  document.getElementById("msgSend").addEventListener("click", function () {
+    var btn = this;
+    var name = document.getElementById("msgName").value.trim();
+    var email = document.getElementById("msgEmail").value.trim();
+    var message = document.getElementById("msgText").value.trim();
+
+    if (!message) return;
+
+    var vid = localStorage.getItem("_vid") || "anonymous";
+
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+
+    fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        visitor_id: vid,
+        type: "message",
+        page: window.location.pathname,
+        name: name,
+        email: email,
+        message: message,
+      }),
+    })
+      .then(function () {
+        document.getElementById("msgSuccess").style.display = "block";
+        document.getElementById("msgName").value = "";
+        document.getElementById("msgEmail").value = "";
+        document.getElementById("msgText").value = "";
+        btn.textContent = "Send";
+        btn.disabled = false;
+        setTimeout(function () {
+          document.getElementById("msgSuccess").style.display = "none";
+        }, 3000);
+      })
+      .catch(function () {
+        btn.textContent = "Send";
+        btn.disabled = false;
+      });
+  });
+})();
+</script>

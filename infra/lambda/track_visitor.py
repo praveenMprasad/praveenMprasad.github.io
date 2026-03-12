@@ -26,9 +26,12 @@ def handler(event, context):
         source_ip = event.get("requestContext", {}).get("identity", {}).get("sourceIp", "unknown")
         user_agent = event.get("headers", {}).get("User-Agent", "unknown")
 
+        record_type = body.get("type", "visitor")
+
         item = {
             "visitor_id": body.get("visitor_id", str(uuid.uuid4())),
             "timestamp": datetime.now(timezone.utc).isoformat(),
+            "type": record_type,
             "page": body.get("page", "/"),
             "referrer": body.get("referrer", ""),
             "ip": source_ip,
@@ -36,6 +39,12 @@ def handler(event, context):
             "screen_width": body.get("screen_width", 0),
             "screen_height": body.get("screen_height", 0),
         }
+
+        # Add message fields if it's a message type
+        if record_type == "message":
+            item["name"] = body.get("name", "")
+            item["email"] = body.get("email", "")
+            item["message"] = body.get("message", "")
 
         table.put_item(Item=item)
 
