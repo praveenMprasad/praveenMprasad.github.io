@@ -1,6 +1,12 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Visitor tracking backend for portfolio site
+Parameters:
+  DashboardPassword:
+    Type: String
+    Default: changeme
+    NoEcho: true
+    Description: Password to access the visitor stats dashboard
 Globals:
   Function:
     Timeout: 10
@@ -49,14 +55,40 @@ Resources:
               Ref: VisitorApi
     Metadata:
       SamResourceId: TrackVisitorFunction
+  GetStatsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: GetStatsFunction
+      Handler: get_stats.handler
+      Timeout: 30
+      Policies:
+      - DynamoDBReadPolicy:
+          TableName:
+            Ref: VisitorTable
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: VisitorTable
+          DASHBOARD_PASSWORD:
+            Ref: DashboardPassword
+      Events:
+        StatsApi:
+          Type: Api
+          Properties:
+            Path: /stats
+            Method: get
+            RestApiId:
+              Ref: VisitorApi
+    Metadata:
+      SamResourceId: GetStatsFunction
   VisitorApi:
     Type: AWS::Serverless::Api
     Properties:
       StageName: prod
       Cors:
         AllowOrigin: '''*'''
-        AllowHeaders: '''Content-Type'''
-        AllowMethods: '''POST,OPTIONS'''
+        AllowHeaders: '''Content-Type,Authorization'''
+        AllowMethods: '''GET,POST,OPTIONS'''
       Tags:
         auto-delete: 'no'
 Outputs:
@@ -64,3 +96,7 @@ Outputs:
     Description: Visitor tracking API endpoint
     Value:
       Fn::Sub: https://${VisitorApi}.execute-api.${AWS::Region}.amazonaws.com/prod/track
+  StatsEndpoint:
+    Description: Visitor stats API endpoint
+    Value:
+      Fn::Sub: https://${VisitorApi}.execute-api.${AWS::Region}.amazonaws.com/prod/stats

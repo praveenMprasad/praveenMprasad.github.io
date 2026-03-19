@@ -1,0 +1,204 @@
+{{ define "main" }}
+<div class="post">
+  <div class="post__content">
+    <div id="dashboard-login" style="max-width:400px;margin:60px auto;text-align:center;">
+      <h1 style="margin-bottom:24px;">🔒 Visitor Dashboard</h1>
+      <input type="password" id="dash-password" placeholder="Enter dashboard password"
+        style="width:100%;padding:12px;border:2px solid #667eea;border-radius:8px;font-size:16px;margin-bottom:16px;" />
+      <button onclick="loadDashboard()"
+        style="width:100%;padding:12px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;">
+        View Dashboard
+      </button>
+      <p id="login-error" style="color:#e74c3c;margin-top:12px;display:none;">Invalid password</p>
+    </div>
+
+    <div id="dashboard-content" style="display:none;max-width:1000px;margin:0 auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+        <h1 style="margin:0;">📊 Visitor Dashboard</h1>
+        <select id="days-select" onchange="refreshData()"
+          style="padding:8px 16px;border:2px solid #667eea;border-radius:8px;font-size:14px;">
+          <option value="7">Last 7 days</option>
+          <option value="30" selected>Last 30 days</option>
+          <option value="90">Last 90 days</option>
+        </select>
+      </div>
+
+      <!-- Summary Cards -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px;">
+        <div class="dash-card">
+          <div class="dash-card__label">Total Visits</div>
+          <div class="dash-card__value" id="total-visits">-</div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card__label">Unique Visitors</div>
+          <div class="dash-card__value" id="unique-visitors">-</div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card__label">Avg Daily Visits</div>
+          <div class="dash-card__value" id="avg-daily">-</div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card__label">Top Page</div>
+          <div class="dash-card__value" id="top-page" style="font-size:1.2em;">-</div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="dash-chart-row">
+        <div class="dash-chart-box" style="flex:2;min-width:300px;">
+          <h3>Daily Visits</h3>
+          <canvas id="chart-daily" aria-label="Daily visits chart" role="img"></canvas>
+        </div>
+      </div>
+      <div class="dash-chart-row">
+        <div class="dash-chart-box">
+          <h3>Top Pages</h3>
+          <canvas id="chart-pages" aria-label="Top pages chart" role="img"></canvas>
+        </div>
+        <div class="dash-chart-box">
+          <h3>Traffic Sources</h3>
+          <canvas id="chart-referrers" aria-label="Traffic sources chart" role="img"></canvas>
+        </div>
+      </div>
+      <div class="dash-chart-row">
+        <div class="dash-chart-box">
+          <h3>Device Types</h3>
+          <canvas id="chart-devices" aria-label="Device types chart" role="img"></canvas>
+        </div>
+        <div class="dash-chart-box">
+          <h3>Visits by Hour (UTC)</h3>
+          <canvas id="chart-hourly" aria-label="Hourly visits chart" role="img"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.dash-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  padding: 20px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+}
+.dash-card__label { font-size: 0.85em; opacity: 0.85; margin-bottom: 6px; }
+.dash-card__value { font-size: 2em; font-weight: 700; }
+.dash-chart-row {
+  display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;
+}
+.dash-chart-box {
+  flex: 1; min-width: 280px;
+  background: #f8f9fa; border-radius: 12px; padding: 20px;
+  border-left: 4px solid #667eea;
+}
+.dash-chart-box h3 { margin-top: 0; color: #667eea; }
+@media (prefers-color-scheme: dark) {
+  .dash-chart-box { background: #1e1e2e; }
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script>
+var API_BASE = "https://n4ge8kjgyk.execute-api.us-east-1.amazonaws.com/prod";
+var password = "";
+var charts = {};
+
+function loadDashboard() {
+  password = document.getElementById("dash-password").value;
+  if (!password) return;
+  fetchStats(function(ok) {
+    if (ok) {
+      document.getElementById("dashboard-login").style.display = "none";
+      document.getElementById("dashboard-content").style.display = "block";
+    } else {
+      document.getElementById("login-error").style.display = "block";
+    }
+  });
+}
+
+document.getElementById("dash-password").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") loadDashboard();
+});
+
+function refreshData() { fetchStats(); }
+
+function fetchStats(cb) {
+  var days = document.getElementById("days-select").value;
+  fetch(API_BASE + "/stats?days=" + days, {
+    headers: { "Authorization": "Bearer " + password }
+  })
+  .then(function(r) {
+    if (r.status === 401) { if (cb) cb(false); return null; }
+    return r.json();
+  })
+  .then(function(data) {
+    if (!data) return;
+    renderDashboard(data);
+    if (cb) cb(true);
+  })
+  .catch(function() { if (cb) cb(false); });
+}
+
+function renderDashboard(data) {
+  document.getElementById("total-visits").textContent = data.total_visits.toLocaleString();
+  document.getElementById("unique-visitors").textContent = data.unique_visitors.toLocaleString();
+  var avg = data.daily_visits.length ? Math.round(data.total_visits / data.daily_visits.length) : 0;
+  document.getElementById("avg-daily").textContent = avg.toLocaleString();
+  document.getElementById("top-page").textContent = data.top_pages.length ? data.top_pages[0].page : "-";
+
+  var purple = "rgba(102,126,234,0.8)";
+  var purpleBg = "rgba(102,126,234,0.15)";
+
+  renderChart("chart-daily", "line", {
+    labels: data.daily_visits.map(function(d){return d.date.slice(5);}),
+    datasets: [{
+      label: "Visits", data: data.daily_visits.map(function(d){return d.count;}),
+      borderColor: purple, backgroundColor: purpleBg, fill: true, tension: 0.3
+    }]
+  });
+
+  renderChart("chart-pages", "bar", {
+    labels: data.top_pages.map(function(d){return d.page;}),
+    datasets: [{
+      label: "Views", data: data.top_pages.map(function(d){return d.count;}),
+      backgroundColor: purple, borderRadius: 6
+    }]
+  }, {indexAxis:"y"});
+
+  var refColors = ["#667eea","#764ba2","#f093fb","#f5576c","#4facfe","#00f2fe","#43e97b","#fa709a","#fee140","#a18cd1"];
+  renderChart("chart-referrers", "doughnut", {
+    labels: data.referrers.map(function(d){return d.source;}),
+    datasets: [{
+      data: data.referrers.map(function(d){return d.count;}),
+      backgroundColor: refColors.slice(0, data.referrers.length)
+    }]
+  });
+
+  var devColors = ["#667eea","#764ba2","#f093fb"];
+  renderChart("chart-devices", "doughnut", {
+    labels: data.screen_sizes.map(function(d){return d.category;}),
+    datasets: [{
+      data: data.screen_sizes.map(function(d){return d.count;}),
+      backgroundColor: devColors.slice(0, data.screen_sizes.length)
+    }]
+  });
+
+  renderChart("chart-hourly", "bar", {
+    labels: data.hourly.map(function(d){return d.hour + ":00";}),
+    datasets: [{
+      label: "Visits", data: data.hourly.map(function(d){return d.count;}),
+      backgroundColor: purple, borderRadius: 4
+    }]
+  });
+}
+
+function renderChart(id, type, chartData, extraOpts) {
+  if (charts[id]) charts[id].destroy();
+  var ctx = document.getElementById(id).getContext("2d");
+  var opts = { responsive: true, plugins: { legend: { display: type === "doughnut" } } };
+  if (extraOpts) Object.assign(opts, extraOpts);
+  charts[id] = new Chart(ctx, { type: type, data: chartData, options: opts });
+}
+</script>
+{{ end }}

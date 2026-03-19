@@ -2,6 +2,17 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Visitor tracking backend for portfolio site
 
+Parameters:
+  DashboardPassword:
+    Type: String
+    Default: changeme
+    NoEcho: true
+    Description: Password to access the visitor stats dashboard
+  ExistingTableName:
+    Type: String
+    Default: portfolio-visitors
+    Description: Name of the existing DynamoDB visitor table
+
 Globals:
   Function:
     Timeout: 10
@@ -10,25 +21,6 @@ Globals:
       auto-delete: "no"
 
 Resources:
-  VisitorTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: portfolio-visitors
-      BillingMode: PAY_PER_REQUEST
-      AttributeDefinitions:
-        - AttributeName: visitor_id
-          AttributeType: S
-        - AttributeName: timestamp
-          AttributeType: S
-      KeySchema:
-        - AttributeName: visitor_id
-          KeyType: HASH
-        - AttributeName: timestamp
-          KeyType: RANGE
-      Tags:
-        - Key: auto-delete
-          Value: "no"
-
   TrackVisitorFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -36,10 +28,10 @@ Resources:
       Handler: track_visitor.handler
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref VisitorTable
+            TableName: !Ref ExistingTableName
       Environment:
         Variables:
-          TABLE_NAME: !Ref VisitorTable
+          TABLE_NAME: !Ref ExistingTableName
       Events:
         TrackApi:
           Type: Api
@@ -48,14 +40,35 @@ Resources:
             Method: post
             RestApiId: !Ref VisitorApi
 
+  GetStatsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda/
+      Handler: get_stats.handler
+      Timeout: 30
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref ExistingTableName
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ExistingTableName
+          DASHBOARD_PASSWORD: !Ref DashboardPassword
+      Events:
+        StatsApi:
+          Type: Api
+          Properties:
+            Path: /stats
+            Method: get
+            RestApiId: !Ref VisitorApi
+
   VisitorApi:
     Type: AWS::Serverless::Api
     Properties:
       StageName: prod
       Cors:
         AllowOrigin: "'*'"
-        AllowHeaders: "'Content-Type'"
-        AllowMethods: "'POST,OPTIONS'"
+        AllowHeaders: "'Content-Type,Authorization'"
+        AllowMethods: "'GET,POST,OPTIONS'"
       Tags:
         auto-delete: "no"
 
@@ -63,3 +76,6 @@ Outputs:
   ApiEndpoint:
     Description: Visitor tracking API endpoint
     Value: !Sub "https://${VisitorApi}.execute-api.${AWS::Region}.amazonaws.com/prod/track"
+  StatsEndpoint:
+    Description: Visitor stats API endpoint
+    Value: !Sub "https://${VisitorApi}.execute-api.${AWS::Region}.amazonaws.com/prod/stats"

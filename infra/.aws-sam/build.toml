@@ -7,6 +7,6 @@ architecture = "x86_64"
 handler = "track_visitor.handler"
 manifest_hash = ""
 packagetype = "Zip"
-functions = ["TrackVisitorFunction"]
+functions = ["TrackVisitorFunction", "GetStatsFunction"]
 
 [layer_build_definitions]
