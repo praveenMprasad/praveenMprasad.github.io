@@ -51,6 +51,7 @@ Data and AI Specialist at AWS with 10+ years of experience in distributed data s
 <p><span style="font-weight:700; color:#ff6f3c;">OpenSearch Ambassador</span>, active open-source contributor, and technical speaker in the ML-Search and Agentic-AI space of OpenSearch. Builder of the official public OpenSearch AI demo playground showcasing ML-search and Agentic RAG patterns, and organiser of Search community meetups in Dublin.</p>
 </div>
 
+
 <div class="about-card">
 <h3>🔬 Research to Practice</h3>
 <p>Passionate about Search Relevance, bridging research into practical developer-ready search solutions. This started after my masters degree in DataScience specialised in Information Retrieval.</p>
