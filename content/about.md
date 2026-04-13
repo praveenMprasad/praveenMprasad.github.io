@@ -42,7 +42,7 @@ title: ""
 .highlight-ambassador {
   font-weight: 700;
   font-size: 1.15em;
-  color: #00bfff;
+  color: #FF6B6B;
 }
 </style>
 

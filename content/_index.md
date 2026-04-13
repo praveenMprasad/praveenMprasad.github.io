@@ -34,6 +34,12 @@
   margin: 0;
   color: #333;
 }
+
+.highlight-ambassador {
+  font-weight: 700;
+  font-size: 1.15em;
+  color: #FF6B6B;
+}
 </style>
 
 <div class="about-section">
@@ -44,7 +50,7 @@ Data and AI specialist with 10+ years in data engineering and ML, currently work
 
 <div class="about-card">
 <h3>🎤 Open Source & Community</h3>
-<p>Active open-source contributor and technical speaker in the ML-Search and Agentic-AI space. Builder of the official public OpenSearch AI demo playground showcasing ML-search and Agentic RAG patterns.</p>
+<p><span class="highlight-ambassador">OpenSearch Ambassador</span>, active open-source contributor and technical speaker in the ML-Search and Agentic-AI space. Builder of the official public OpenSearch AI demo playground showcasing ML-search and Agentic RAG patterns.</p>
 </div>
 
 <div class="about-card">
