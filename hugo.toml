@@ -19,6 +19,11 @@ theme = "anatole"
   url = "https://github.com/aws-samples/AI-search-with-amazon-opensearch-service"
 
   [[params.socialIcons]]
+  icon = "fab fa-meetup"
+  title = "OpenSearch Dublin Meetup"
+  url = "https://www.meetup.com/opensearch-project-dublin/events/"
+
+  [[params.socialIcons]]
   icon = "fas fa-envelope"
   title = "Email"
   url = "mailto:reach2praveen001@gmail.com"

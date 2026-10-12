@@ -56,6 +56,7 @@ title: ""
   </div>
   <div class="talk-content">
     <h3><a href="https://youtu.be/gAYBV82LZUs" target="_blank">Scaling multivector search</a></h3>
+    <p style = "font-size:18px">Adopting multivector search in production using MUVERA</p>
   </div>
 </div>
 <div class="talk-item">
