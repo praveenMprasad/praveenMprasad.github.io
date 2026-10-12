@@ -50,12 +50,28 @@ title: ""
 
 <div class="post-grid">
 <div class="post-card">
-  <a href="https://huggingface.co/spaces/YOUR_SPACE_LINK" target="_blank">
+  <a href="https://huggingface.co/spaces/opensearch-project/OpenSearch-AI" target="_blank">
     <img src="/images/demo-opensearch-ai.jpg" alt="OpenSearch AI demos">
   </a>
   <div class="body">
     <a class="title" href="https://huggingface.co/spaces/opensearch-project/OpenSearch-AI" target="_blank">OpenSearch AI Demo Playground</a>
     <div class="meta">AI Search • Multimodal RAG • Agentic RAG</div>
+  </div>
+</div>
+</div>
+
+</div>
+<div class="post-section">
+
+## Code & Benchmarks
+
+<div class="post-grid">
+<div class="post-card">
+  <div class="body">
+    <a class="title" href="https://github.com/aws-samples/AI-search-with-amazon-opensearch-service/tree/muvera-late-interaction/muvera-late-interaction" target="_blank">
+      Implement multivector search with MUVERA in OpenSearch using a custom plugin
+    </a>
+    <div class="meta">GitHub • aws-samples</div>
   </div>
 </div>
 </div>

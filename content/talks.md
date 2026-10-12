@@ -50,6 +50,16 @@ title: ""
 <div class="talk-list">
 <div class="talk-item">
   <div class="talk-thumb">
+    <a href="https://youtu.be/gAYBV82LZUs" target="_blank">
+      <img src="https://img.youtube.com/vi/gAYBV82LZUs/hqdefault.jpg">
+    </a>
+  </div>
+  <div class="talk-content">
+    <h3><a href="https://youtu.be/gAYBV82LZUs" target="_blank">Scaling multivector search</a></h3>
+  </div>
+</div>
+<div class="talk-item">
+  <div class="talk-thumb">
     <a href="https://youtu.be/5C9F0WR4PF8" target="_blank">
       <img src="https://img.youtube.com/vi/5C9F0WR4PF8/hqdefault.jpg">
     </a>
