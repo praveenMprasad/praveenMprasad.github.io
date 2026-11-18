@@ -59,6 +59,9 @@ title: ""
   </div>
 </div>
 <div class="post-card">
+  <a href="https://huggingface.co/spaces/prasadnu/srw-storefront" target="_blank">
+    <img src="/images/demo-ubi.png" alt="OpenSearch User Behavior Insights demo">
+  </a>
   <div class="body">
     <a class="title" href="https://huggingface.co/spaces/prasadnu/srw-storefront" target="_blank">OpenSearch User Behavior Insights</a>
     <div class="meta">Hugging Face Spaces</div>
