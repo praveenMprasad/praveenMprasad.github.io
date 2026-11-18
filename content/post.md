@@ -58,6 +58,12 @@ title: ""
     <div class="meta">AI Search • Multimodal RAG • Agentic RAG</div>
   </div>
 </div>
+<div class="post-card">
+  <div class="body">
+    <a class="title" href="https://huggingface.co/spaces/prasadnu/srw-storefront" target="_blank">OpenSearch User Behavior Insights</a>
+    <div class="meta">Hugging Face Spaces</div>
+  </div>
+</div>
 </div>
 
 </div>
